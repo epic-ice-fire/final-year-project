@@ -6,7 +6,6 @@ on:
       - ".github/workflows/restore-pau-snapshot.yml"
 permissions:
   contents: write
-  workflows: write
 jobs:
   restore:
     runs-on: ubuntu-latest
@@ -20,7 +19,7 @@ jobs:
         run: |
           set -euo pipefail
           git clone --depth 1 --branch main https://github.com/epic-ice-fire/unicart_app.git /tmp/unicart-source
-          rsync -a --delete --exclude='.git' /tmp/unicart-source/ ./
+          rsync -a --delete --exclude='.git' --exclude='.github/workflows/' /tmp/unicart-source/ ./
       - name: Commit and push the PAU-only snapshot
         run: |
           set -euo pipefail
