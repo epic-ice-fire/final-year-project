@@ -6,6 +6,7 @@ on:
       - ".github/workflows/restore-pau-snapshot.yml"
 permissions:
   contents: write
+  workflows: write
 jobs:
   restore:
     runs-on: ubuntu-latest
